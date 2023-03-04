@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
 
+  has_many :change_detectors
+
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 12 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/ }
 

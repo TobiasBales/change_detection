@@ -2,7 +2,7 @@ class ChangeDetectorsController < ApplicationController
   before_action :set_change_detector, only: %i[show edit update destroy]
 
   def index
-    @change_detectors = ChangeDetector.all
+    @change_detectors = Current.user.change_detectors.all
   end
 
   def show; end
@@ -15,6 +15,7 @@ class ChangeDetectorsController < ApplicationController
 
   def create
     @change_detector = ChangeDetector.new(change_detector_params)
+    @change_detector.user = Current.user
 
     if @change_detector.save
       redirect_to change_detector_url(@change_detector), notice: 'Change detector was successfully created.'
@@ -40,7 +41,7 @@ class ChangeDetectorsController < ApplicationController
   private
 
   def set_change_detector
-    @change_detector = ChangeDetector.find(params[:id])
+    @change_detector = Current.user.change_detectors.find(params[:id])
   end
 
   def change_detector_params
