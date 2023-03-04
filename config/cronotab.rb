@@ -11,4 +11,4 @@
 #   end
 # end
 #
-Crono.perform(UpdateChangeDetectorsJob).every 5.minutes
+Crono.perform(UpdateChangeDetectorsJob).with_options(truncate_log: 1000).every 5.minutes
