@@ -1,0 +1,10 @@
+{
+  "name": "change-detection",
+  "description": "Get notified when websites change",
+  "keywords": [],
+  "scripts": {
+    "dokku": {
+      "predeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
