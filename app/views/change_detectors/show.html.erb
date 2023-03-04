@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @change_detector %>
+
+<div>
+  <%= link_to "Edit this change detector", edit_change_detector_path(@change_detector) %> |
+  <%= link_to "Back to change detectors", change_detectors_path %>
+
+  <%= button_to "Destroy this change detector", @change_detector, method: :delete %>
+</div>

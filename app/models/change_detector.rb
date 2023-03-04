@@ -1,0 +1,2 @@
+class ChangeDetector < ApplicationRecord
+end

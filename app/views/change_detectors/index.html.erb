@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Change detectors</h1>
+
+<div id="change_detectors">
+  <% @change_detectors.each do |change_detector| %>
+    <%= render change_detector %>
+    <p>
+      <%= link_to "Show this change detector", change_detector %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New change detector", new_change_detector_path %>
