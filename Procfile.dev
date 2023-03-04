@@ -1,5 +1,5 @@
 web: unset PORT && bin/rails server
 js: yarn build --watch
 css: yarn build:css --watch
-crono: bundle exec crono
+crono: bundle exec crono -e development
 dependencies: docker compose up
