@@ -79,3 +79,5 @@ gem "authentication-zero", "~> 2.16"
 gem "bcrypt", "~> 3.1.7"
 
 gem "crono", "~> 2.0"
+
+gem "faraday", "~> 2.7"
