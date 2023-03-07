@@ -6,17 +6,21 @@ class UpdateChangeDetectorsJob < ApplicationJob
 
     ChangeDetector.all.each do |change_detector|
       puts("Processing change detector for #{change_detector.url} for #{change_detector.user.email}")
+
+      change_detector.migrate_to_result_model
+
       response = Faraday.get(change_detector.url)
 
-      return puts('No change detected') if response.body == change_detector.result
+      return puts('No change detected') unless change_detector.changed?(response.body)
 
       message = "Change detected for #{change_detector.url}"
       puts(message)
       send_telegram_message(change_detector.user.telegram_id, message)
 
-      change_detector.result = response.body
-      change_detector.save!
+      change_detector.store_result(response.body)
     end
+
+    nil
   end
 
   private
