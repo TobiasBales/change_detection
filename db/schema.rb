@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_215623) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_183959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_215623) do
     t.index ["user_id"], name: "index_password_reset_tokens_on_user_id"
   end
 
+  create_table "results", force: :cascade do |t|
+    t.bigint "change_detector_id", null: false
+    t.text "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["change_detector_id"], name: "index_results_on_change_detector_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "user_agent"
@@ -64,5 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_215623) do
 
   add_foreign_key "email_verification_tokens", "users"
   add_foreign_key "password_reset_tokens", "users"
+  add_foreign_key "results", "change_detectors"
   add_foreign_key "sessions", "users"
 end

@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  change_detector: one
+  result: MyText
+
+two:
+  change_detector: two
+  result: MyText
