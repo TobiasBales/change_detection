@@ -8,14 +8,15 @@ class UpdateChangeDetectorsJob < ApplicationJob
       Rails.logger.info("Processing change detector for #{change_detector.url} for #{change_detector.user.email}")
 
       response = Faraday.get(change_detector.url)
+      normalized_response = change_detector.normalize(response.body)
 
-      return Rails.logger.info('No change detected') unless change_detector.changed?(response.body)
+      return Rails.logger.info('No change detected') unless change_detector.changed?(normalized_response)
 
       message = "Change detected for #{change_detector.url}"
       Rails.logger.info(message)
       send_telegram_message(change_detector.user.telegram_id, message)
 
-      change_detector.store_result(response.body)
+      change_detector.store_result(normalized_response)
     end
 
     nil

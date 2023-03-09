@@ -11,6 +11,17 @@ class ChangeDetector < ApplicationRecord
     last_result.result != result
   end
 
+  def normalize(result)
+    discard = discard_regexps.map { |r| Regexp.new(r, 'i') }
+    p discard
+
+    discard.each do |r|
+      result = result.gsub(r, '')
+    end
+
+    result
+  end
+
   def store_result(result)
     results.build(result:).save!
   end
