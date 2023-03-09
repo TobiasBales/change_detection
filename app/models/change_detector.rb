@@ -14,15 +14,4 @@ class ChangeDetector < ApplicationRecord
   def store_result(result)
     results.build(result:).save!
   end
-
-  def migrate_to_result_model
-    return if result.nil?
-
-    ActiveRecord::Base.transaction do
-      store_result(result)
-
-      self.result = nil
-      save!
-    end
-  end
 end

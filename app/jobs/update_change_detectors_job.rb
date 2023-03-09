@@ -7,8 +7,6 @@ class UpdateChangeDetectorsJob < ApplicationJob
     ChangeDetector.all.each do |change_detector|
       Rails.logger.info("Processing change detector for #{change_detector.url} for #{change_detector.user.email}")
 
-      change_detector.migrate_to_result_model
-
       response = Faraday.get(change_detector.url)
 
       return Rails.logger.info('No change detected') unless change_detector.changed?(response.body)
