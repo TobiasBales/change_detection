@@ -38,3 +38,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem "amazing_print", "~> 1.4"
+
+gem "rails_semantic_logger", "~> 4.11"

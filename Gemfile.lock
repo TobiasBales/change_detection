@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    amazing_print (1.4.0)
     authentication-zero (2.16.9)
     bcrypt (3.1.18)
     bindex (0.8.1)
@@ -357,6 +358,10 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
+    rails_semantic_logger (4.11.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.9)
     railties (7.0.4.2)
       actionpack (= 7.0.4.2)
       activesupport (= 7.0.4.2)
@@ -376,6 +381,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_logger (4.12.0)
+      concurrent-ruby (~> 1.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -415,6 +422,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  amazing_print (~> 1.4)
   authentication-zero (~> 2.16)
   bcrypt (~> 3.1.7)
   bootsnap
@@ -432,6 +440,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler
   rails (~> 7.0.4, >= 7.0.4.1)
+  rails_semantic_logger (~> 4.11)
   redis (~> 4.0)
   selenium-webdriver
   sprockets-rails
